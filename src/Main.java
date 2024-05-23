@@ -1,15 +1,57 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import entities.dipendenti.Dipendente;
+import entities.dipendenti.DipendenteFullTime;
+import entities.dipendenti.DipendentePartTime;
+import entities.dipendenti.Dirigente;
+import enums.Dipartimenti;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+       /* DipendenteFullTime dipendenteFullTime = new DipendenteFullTime(Dipartimenti.PRODUZIONE);
+        System.out.println("Informazioni full-time:");
+        System.out.println("ID: " + dipendenteFullTime.getId());
+        System.out.println("Dipartimento: " + dipendenteFullTime.getDepartment());
+        System.out.println("Stipendio: " + dipendenteFullTime.calculateSalary());
+        System.out.println();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+        DipendentePartTime dipendentePartTime2 = new DipendentePartTime(Dipartimenti.VENDITE, 12.0, 15.5);
+        DipendentePartTime dipendentePartTime = new DipendentePartTime(Dipartimenti.AMMINISTRAZIONE, 15.0, 20.0);
+        System.out.println("Informazioni part-time:");
+        System.out.println("ID: " + dipendentePartTime.getId());
+        System.out.println("Dipartimento: " + dipendentePartTime.getDepartment());
+        System.out.println("Stipendio: " + dipendentePartTime.calculateSalary());
+        System.out.println();
+
+
+        Dirigente dirigente = new Dirigente(2000.0);
+        System.out.println("Informazioni dirigente:");
+        System.out.println("ID: " + dirigente.getId());
+        System.out.println("Dipartimento: " + dirigente.getDepartment());
+        System.out.println("Bonus dirigente: " + dirigente.getBonusDirigente());
+        System.out.println( "Stipendio: " + dirigente.calculateSalary() + " (Stipendio base + bonus)"); */
+
+        Dipendente[] dipendenti = new Dipendente[10];
+        dipendenti[0] = new DipendenteFullTime(Dipartimenti.PRODUZIONE);
+        dipendenti[1] = new DipendentePartTime(Dipartimenti.AMMINISTRAZIONE, 15.0, 20.0);
+        dipendenti[2] = new DipendentePartTime(Dipartimenti.VENDITE, 12.0, 15.5);
+        dipendenti[3] = new Dirigente(2000.0);
+        dipendenti[4] = new DipendenteFullTime(Dipartimenti.PRODUZIONE);
+        dipendenti[5] = new DipendentePartTime(Dipartimenti.AMMINISTRAZIONE, 18.0, 22.5);
+        dipendenti[6] = new DipendentePartTime(Dipartimenti.VENDITE, 11.0, 17.5);
+        dipendenti[7] = new Dirigente(2500.0);
+        dipendenti[8] = new DipendenteFullTime(Dipartimenti.PRODUZIONE);
+        dipendenti[9] = new DipendentePartTime(Dipartimenti.AMMINISTRAZIONE, 14.0, 18.0);
+
+        double salarioTotale = 0.0;
+        for (int i = 0; i < dipendenti.length; i++) {
+            salarioTotale += dipendenti[i].calculateSalary();
+            System.out.println(" ");
+            System.out.println("INFO Dipendente " + ++i);
+            dipendenti[i].getInfo();
+            System.out.println(" ");
         }
+        System.out.println("------------Salario Totale------------");
+        System.out.println("Salario totale dei dipendenti: " + salarioTotale);
+
     }
 }
